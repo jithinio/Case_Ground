@@ -1,0 +1,71 @@
+body {
+  font-family: "Inter", sans-serif;
+}
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter";
+  box-sizing: border-box;
+  -webkit-appearance: none;
+}
+.main {
+  display: flex;
+  justify-content: center;
+}
+
+.calculatorwrapper {
+  padding: 2em;
+  width: 90vw;
+  display: flex;
+  align-self: middle;
+  flex-direction: column;
+}
+#button {
+  background: #000000;
+  color: #ffffff;
+  border-radius: 100px;
+  font-size: 16px;
+  padding: 16px 20px 16px 20px;
+  margin-top: 1em;
+  outline: none;
+  border: 0px;
+}
+#inputbox {
+  position: relative;
+  border-radius: 30px;
+  font-size: 14px;
+  overflow-y: scroll;
+  height: 40vh;
+  width: 100%;
+  border: 1px solid #dfdfdf;
+  padding: 20px;
+  -webkit-appearance: none;
+}
+.countercollections {
+  position: relative;
+  margin-top: 3em;
+  display: flex;
+  flex-direction: row;
+  gap: 3em;
+  justify-content: space-between;
+}
+.wordCounterWrap,
+.charCounterWrap {
+  position: relative;
+  display: flex;
+  background-color: #f2f2f2;
+  padding: 20px;
+  border-radius: 22px;
+  justify-content: center;
+  text-align: center;
+  gap: 1.2em;
+  width: -webkit-fill-available;
+  flex-direction: column;
+  color: #696969;
+}
+.wordCounterWrap span,
+.charCounterWrap span {
+  font-size: 1.8em;
+  color: #333333;
+  font-weight: 500;
+}
