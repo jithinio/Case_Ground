@@ -118,25 +118,24 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   return newRequire;
 })({"src/index.js":[function(require,module,exports) {
+// Global Variable
+var mainInputBox = document.getElementById("inputbox");
+
 // Char Counter
-var charCounter = document.getElementById("inputbox");
 var characterCounter = document.getElementById("charCounterText");
 var countCharacters = function countCharacters() {
-  var charCount = charCounter.value.length;
+  var charCount = mainInputBox.value.length;
   characterCounter.textContent = charCount;
 };
+mainInputBox.addEventListener("input", countCharacters);
 
 // Word Counter
-var wordCount = document.getElementById("inputbox");
 var wordCounter = document.getElementById("wordCounterText");
 var totalWords = function totalWords() {
-  var wordLength = wordCount.value.split(/[^\s]+/).length - 1;
+  var wordLength = mainInputBox.value.split(/[^\s]+/).length - 1;
   wordCounter.textContent = wordLength;
 };
-
-// Counters Live Event Handlers
-wordCount.addEventListener("input", totalWords);
-charCounter.addEventListener("input", countCharacters);
+mainInputBox.addEventListener("input", totalWords);
 
 // Clipboard Functions
 var clipBoardButton = document.getElementById("clipboardbutton");
@@ -153,8 +152,22 @@ clipBoardButton.addEventListener("click", function (clipboard) {
 // Clear text
 var clearText = document.getElementById("cleartext");
 clearText.addEventListener("click", function () {
-  var clearInputBox = document.getElementById("inputbox");
-  clearInputBox.value = "";
+  mainInputBox.value = "";
+  var clearWord = document.getElementById("wordCounterText");
+  clearWord.value = "";
+  wordCounter.innerText = "0";
+  characterCounter.innerText = "0";
+});
+
+// Sentence convert.
+var convertButton = document.getElementById("convertbutton");
+convertButton.addEventListener("click", function () {
+  var toConverter = mainInputBox.value;
+  var sentences = String(toConverter).split(/(?<=[.!?])\s+/);
+  var convertedSentense = sentences.map(function (item) {
+    return item.charAt(0).toUpperCase() + item.slice(1).toLowerCase();
+  }).join(" ");
+  mainInputBox.value = convertedSentense;
 });
 },{}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];

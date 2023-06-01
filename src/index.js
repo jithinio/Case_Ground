@@ -1,22 +1,21 @@
+// Global Variable
+let mainInputBox = document.getElementById("inputbox");
+
 // Char Counter
-let charCounter = document.getElementById("inputbox");
 let characterCounter = document.getElementById("charCounterText");
 let countCharacters = () => {
-  let charCount = charCounter.value.length;
+  let charCount = mainInputBox.value.length;
   characterCounter.textContent = charCount;
 };
+mainInputBox.addEventListener("input", countCharacters);
 
 // Word Counter
-let wordCount = document.getElementById("inputbox");
 let wordCounter = document.getElementById("wordCounterText");
 let totalWords = () => {
-  let wordLength = wordCount.value.split(/[^\s]+/).length - 1;
+  let wordLength = mainInputBox.value.split(/[^\s]+/).length - 1;
   wordCounter.textContent = wordLength;
 };
-
-// Counters Live Event Handlers
-wordCount.addEventListener("input", totalWords);
-charCounter.addEventListener("input", countCharacters);
+mainInputBox.addEventListener("input", totalWords);
 
 // Clipboard Functions
 let clipBoardButton = document.getElementById("clipboardbutton");
@@ -34,6 +33,20 @@ clipBoardButton.addEventListener("click", (clipboard) => {
 // Clear text
 let clearText = document.getElementById("cleartext");
 clearText.addEventListener("click", () => {
-  let clearInputBox = document.getElementById("inputbox");
-  clearInputBox.value = "";
+  mainInputBox.value = "";
+  let clearWord = document.getElementById("wordCounterText");
+  clearWord.value = "";
+  wordCounter.innerText = "0";
+  characterCounter.innerText = "0";
+});
+
+// Sentence convert.
+let convertButton = document.getElementById("convertbutton");
+convertButton.addEventListener("click", () => {
+  let toConverter = mainInputBox.value;
+  let sentences = String(toConverter).split(/(?<=[.!?])\s+/);
+  let convertedSentense = sentences
+    .map((item) => item.charAt(0).toUpperCase() + item.slice(1).toLowerCase())
+    .join(" ");
+  mainInputBox.value = convertedSentense;
 });
