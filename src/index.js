@@ -17,3 +17,23 @@ let totalWords = () => {
 // Counters Live Event Handlers
 wordCount.addEventListener("input", totalWords);
 charCounter.addEventListener("input", countCharacters);
+
+// Clipboard Functions
+let clipBoardButton = document.getElementById("clipboardbutton");
+// Initiating Clipboardjs
+let clipboard = new ClipboardJS(clipBoardButton);
+
+clipBoardButton.addEventListener("click", (clipboard) => {
+  let alertBadge = document.getElementById("copiedtextbadge");
+  alertBadge.style.display = "block";
+  setTimeout(() => {
+    alertBadge.style.display = "none";
+  }, 2000);
+});
+
+// Clear text
+let clearText = document.getElementById("cleartext");
+clearText.addEventListener("click", () => {
+  let clearInputBox = document.getElementById("inputbox");
+  clearInputBox.value = "";
+});
