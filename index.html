@@ -16,7 +16,11 @@
     <div class="main">
       <div class="calculatorwrapper">
         <textarea id="inputbox" placeholder="Enter your Content"></textarea>
-        <button id="button">Converter</button>
+        <button id="convertbutton">Converter</button>
+        <button id="clipboardbutton" data-clipboard-target="#inputbox">
+          Copy to Clipboard
+        </button>
+        <button id="cleartext">Clear</button>
         <div class="countercollections">
           <div class="wordCounterWrap">
             <span id="wordCounterText"> 0 </span> Words
@@ -25,8 +29,10 @@
             <span id="charCounterText"> 0 </span> Charecters
           </div>
         </div>
+        <div id="copiedtextbadge">Content Copied to Clipboard</div>
       </div>
     </div>
     <script type="text/javascript" src="./src/index.js"></script>
+    <script src="https://unpkg.com/clipboard@2/dist/clipboard.min.js"></script>
   </body>
 </html>
